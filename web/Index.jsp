@@ -38,16 +38,23 @@
     <%--嵌入Head.jsp--%>
         <jsp:include page="/Struct/Head.jsp"></jsp:include>
 
-    <%-- 获取登录或注册 创建的Session值--%>
-        <%
+<%--    &lt;%&ndash; 获取登录或注册 创建的Session值&ndash;%&gt;
+<%
+        //session有数据 将登录 注册 页面节点隐藏
     if(session.getAttribute("User") != null){
         out.print("<script>\n" +
                 "    $(document).ready(function () {\n" +
                 "        $('#f2').hide();\n" +
                 "    });\n" +
                 "</script>");
+    }else{
+        out.print("<script>\n" +
+                "    $(document).ready(function () {\n" +
+                "        $('#f2').show();\n" +
+                "    });\n" +
+                "</script>");
     }
-%>
+%>--%>
 
 <!-- 选择地址 -->
 <script>

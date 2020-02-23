@@ -1,5 +1,5 @@
    <%@ page language="java" contentType="text/html;charset=UTF-8"  pageEncoding="utf-8" %>
-
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="soubg">
 	<div class="sou">
@@ -80,24 +80,21 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-        
-        	<span class="fl" id="f2" >
-        	你好，请<a href="Login.jsp" style="color:#f40;">登录</a>&nbsp; 
-        	<a href="Register.jsp" style="color:#ff4e00;">免费注册</a> |&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
-        	
+
+
+            <c:if test="${sessionScope.User==null}">
+                <span class="fl" id="f2" >
+        	    你好，请<a href="Login.jsp" style="color:#f40;">登录</a>&nbsp;
+        	    <a href="Register.jsp" style="color:#ff4e00;">免费注册</a> |&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+            </c:if>
+
+
+
         	<span class="ss">
             	<div class="ss_list">
-                	<a href="#">收藏夹</a>
-                    <div class="ss_list_bg">
-                    	<div class="s_city_t"></div>
-                        <div class="ss_list_c">
-                        	<ul>
-                            	<li><a href="#">我的收藏夹</a></li>
-                                <li><a href="#">我的收藏夹</a></li>
-                            </ul>
-                        </div>
-                    </div>     
+                	<a href="#">我的订单</a>
                 </div>
+
                 <div class="ss_list">
                 	<a href="#">客户服务</a>
                     <div class="ss_list_bg">
@@ -124,6 +121,7 @@
                     </div>    
                 </div>
             </span>
+
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>

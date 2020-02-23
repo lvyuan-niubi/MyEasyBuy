@@ -39,7 +39,6 @@
             }
             login();
         }
-
         function login(){
             var username = $(".l_user").val();
             var pwd = $(".l_pwd").val();
