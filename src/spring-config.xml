@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 加载数据库信息-->
+        <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+            <property name="locations">
+                <array>
+                    <value>classpath:db.properties</value>
+                </array>
+            </property>
+        </bean>
+
+    <!-- 配置数据库信息 (和加载数据库信息 一起出现)-->
+        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName" value="${jdbc.driver}"></property>
+            <property name="url" value="${jdbc.url}"></property>
+            <property name="username" value="${jdbc.username}"></property>
+            <property name="password" value="${jdbc.password}"></property>
+        </bean>
+
+    <!-- 创建factory 将mybatis被spring管理-->
+        <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <!--数据库-->
+            <property name="dataSource" ref="dataSource"></property>
+            <!--所有映射文件-->
+            <property name="mapperLocations" value="classpath:org/easybuy/mapper/*.xml"></property>
+        </bean>
+
+
+    <!-- 批量获取所有mapper接口的对象-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <property name="sqlSessionFactoryBeanName" value="factory"></property>
+        <!-- 扫描指定包中的所有mapper接口(interfacce) 并放入ioc容器中 id值为接口名首字母 小写 -->
+            <property name="basePackage" value="org.easybuy.mapper"></property>
+    </bean>
+
+        <!-- 将其他spring配置文件 导入-->
+         <import resource="spring-user.xml"></import>
+    <!-- 将hander 放入ioc容器中-->
+        <context:component-scan base-package="org.easybuy.hander"></context:component-scan>
+
+    <!-- 配置视图分配器-->
+         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+           <property name="prefix" value=""></property>
+            <property name="suffix" value=".jsp"></property>
+        </bean>
+
+    <!-- springMVC 的基础配置 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!-- 允许访问静态资源 和上方配置出现才有用 不然只可以访问静态资源-->
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+
+</beans>
