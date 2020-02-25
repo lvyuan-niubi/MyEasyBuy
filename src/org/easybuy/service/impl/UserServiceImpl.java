@@ -5,7 +5,12 @@ import org.easybuy.entity.User;
 import org.easybuy.mapper.UserMapper;
 import org.easybuy.service.IUserService;
 
+import java.util.List;
+
 public class UserServiceImpl implements IUserService {
+
+    //dao 接口
+    UserMapper user = null;
 
     /*根据用户名 查询用户*/
     @Override
@@ -21,8 +26,11 @@ public class UserServiceImpl implements IUserService {
         return user.queryUserByLoginName(user1.getLoginName());
     }
 
-    //dao 接口
-    UserMapper user = null;
+    /*查询所有用户*/
+    @Override
+    public List<User> queryAllUser() {
+        return user.queryAllUser();
+    }
 
     public void setUser(UserMapper user) {
         this.user = user;

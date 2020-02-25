@@ -1,5 +1,11 @@
+<%-- 主页面--%>
 <%@page import="org.easybuy.entity.User"%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"  pageEncoding="utf-8" %>
+
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,46 +35,14 @@
     <script type="text/javascript" src="js/tban.js"></script>
     
 	<script type="text/javascript" src="js/lrscroll_1.js"></script>
-    
-    
+
+
 <title>尤洪</title>
 </head>
 <body>  
 <!--Begin Header Begin-->
     <%--嵌入Head.jsp--%>
         <jsp:include page="/Struct/Head.jsp"></jsp:include>
-
-<%--    &lt;%&ndash; 获取登录或注册 创建的Session值&ndash;%&gt;
-<%
-        //session有数据 将登录 注册 页面节点隐藏
-    if(session.getAttribute("User") != null){
-        out.print("<script>\n" +
-                "    $(document).ready(function () {\n" +
-                "        $('#f2').hide();\n" +
-                "    });\n" +
-                "</script>");
-    }else{
-        out.print("<script>\n" +
-                "    $(document).ready(function () {\n" +
-                "        $('#f2').show();\n" +
-                "    });\n" +
-                "</script>");
-    }
-%>--%>
-
-<!-- 选择地址 -->
-<script>
-	$(function(){
-		$("td span").click(function(){
-			$("td span").removeAttr("class");	//删除其他样式
-			$(this).attr("class","c_check");	//添加样式
-			$(".s_address").html($(this).html()); //设置html值
-		});
-	});
-</script>
-
-
-
 
 <div class="top">
     <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>

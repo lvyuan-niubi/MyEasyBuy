@@ -28,7 +28,15 @@
     <orderEntry type="library" name="JavaMD5" level="project" />
     <orderEntry type="library" name="EasyBuy" level="project" />
     <orderEntry type="library" name="lib" level="project" />
-    <orderEntry type="library" name="jstl-1.2JSTL" level="project" />
-    <orderEntry type="library" name="standard-1.1.2JSTL" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Desktop/java学习插件jar包/jstl/jstl-1.2JSTL.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="jstl-1.2JSTL (3)" level="project" />
   </component>
 </module>

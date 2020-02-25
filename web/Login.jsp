@@ -1,3 +1,4 @@
+<%-- 注册--%>
 <%@ page language="java" contentType="text/html;charset=UTF-8"  pageEncoding="utf-8" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -42,7 +43,6 @@
         function login(){
             var username = $(".l_user").val();
             var pwd = $(".l_pwd").val();
-
             $.post(
                 "UserHander/Login",
                 {"loginName":username,"password":pwd},

@@ -1,6 +1,41 @@
    <%@ page language="java" contentType="text/html;charset=UTF-8"  pageEncoding="utf-8" %>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <!--[if IE 6]>
+   <script src="js/iepng.js" type="text/javascript"></script>
+   <script type="text/javascript">
+   EvPNG.fix('div, ul, img, li, input, a');
+   </script>
+   <![endif]-->
+   <script type="text/javascript" src="js/jquery-1.11.1.min_044d0927.js"></script>
+   <script type="text/javascript" src="js/jquery.bxslider_e88acd1b.js"></script>
 
+   <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+   <script type="text/javascript" src="js/menu.js"></script>
+
+   <script type="text/javascript" src="js/select.js"></script>
+
+   <script type="text/javascript" src="js/lrscroll.js"></script>
+
+   <script type="text/javascript" src="js/iban.js"></script>
+   <script type="text/javascript" src="js/fban.js"></script>
+   <script type="text/javascript" src="js/f_ban.js"></script>
+   <script type="text/javascript" src="js/mban.js"></script>
+   <script type="text/javascript" src="js/bban.js"></script>
+   <script type="text/javascript" src="js/hban.js"></script>
+   <script type="text/javascript" src="js/tban.js"></script>
+
+   <script type="text/javascript" src="js/lrscroll_1.js"></script>
+
+   <!-- 选择地址 -->
+   <script>
+       $(function(){
+           $("td span").click(function(){
+               $("td span").removeAttr("class");	//删除其他样式
+               $(this).attr("class","c_check");	//添加样式
+               $(".s_address").html($(this).html()); //设置html值
+           });
+       });
+   </script>
 <div class="soubg">
 	<div class="sou">
     	<!--Begin 所在收货地区 Begin-->
@@ -82,18 +117,27 @@
         <span class="fr">
 
 
-            <c:if test="${sessionScope.User==null}">
+            <%--用户--%>
+            <c:if test="${User==null}">
                 <span class="fl" id="f2" >
-        	    你好，请<a href="Login.jsp" style="color:#f40;">登录</a>&nbsp;
-        	    <a href="Register.jsp" style="color:#ff4e00;">免费注册</a> |&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+                你好，请<a href="Login.jsp" style="color:#f40;">登录</a>&nbsp;
+                <a href="Regist.jsp" style="color:#ff4e00;">免费注册</a>|</span>
             </c:if>
 
-
+            <%--用户名--%>
+            </s><c:if test="${User!=null}">
+                <div class="ss_list" id="order">
+                    <a href="">欢迎您:${User.loginName}</a>
+                </div>
+            </c:if>
 
         	<span class="ss">
-            	<div class="ss_list">
-                	<a href="#">我的订单</a>
+            <%--我的订单--%>
+            <c:if test="${User!=null}">
+            	<div class="ss_list" id="order">
+                	<a href="OrderHander/queryOrderList/${User.id}">我的订单</a>
                 </div>
+            </c:if>
 
                 <div class="ss_list">
                 	<a href="#">客户服务</a>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.easybuy.mapper.CatagoryMapper">
+
+    <select id="queryCatagoryRows" resultType="int">
+        select count(*) from easybuy_product_category
+    </select>
+
+    <select id="queryCatagoryByPage" resultType="org.easybuy.entity.Product_Category" parameterType="org.easybuy.util.Pager">
+        select * from easybuy_product_category limit  #{temp},#{rowPerPage}
+    </select>
+
+</mapper>

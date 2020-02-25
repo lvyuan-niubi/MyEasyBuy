@@ -15,4 +15,9 @@
         values(#{loginName},#{userName},#{password},#{sex},#{identityCode},#{email},#{mobile},0)
     </insert>
 
+    <!--根据用户id 查询用户名-->
+    <select id="queryAllUser" resultType="org.easybuy.entity.User">
+        select * from easybuy_user
+    </select>
+
 </mapper>
